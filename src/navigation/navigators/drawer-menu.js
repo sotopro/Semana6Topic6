@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     drawer: {
         flex: 1,
         width: '60%',
-        backgroundColor: 'transparent',
+        backgroundColor: '#fffded',
     },
     sceneContainerStyle : {
         backgroundColor: 'transparent' 
@@ -175,6 +175,9 @@ const styles = StyleSheet.create({
     headerLocation: {
         fontSize: 12,
         fontFamily: 'latoBold'
+    },
+    drawerContentItemMenu: {
+        marginLeft: -15,
     },
     drawerContentContainerStyle: {},
     drawerMenuContainerItemText: {
