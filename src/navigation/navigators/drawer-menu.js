@@ -101,9 +101,11 @@ const styles = StyleSheet.create({
     },
     headerName: {
         fontSize: 14,
+        fontFamily: 'latoRegular'
+
     },
     headerLocation: {
         fontSize: 12,
-        fontWeight: 'bold',
+        fontFamily: 'latoBold'
     },
 });
