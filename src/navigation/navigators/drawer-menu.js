@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { 
     createDrawerNavigator, 
@@ -8,9 +8,53 @@ import {
 import { Home } from "../../screens/index";
 const UserImage = require('../../../assets/user.png');
 
+const MENUS = [
+    {
+        id: 1,
+        name: "Home",
+        label: "Home",
+    },
+    {
+        id: 2,
+        name: "Categories",
+        label: "Categories",
+    },
+    {
+        id: 3,
+        name: "Products",
+        label: "Products",
+    },
+    {
+        id: 4,
+        name: "Profile",
+        label: "Profile",
+    },
+    {
+        id: 5,
+        name: "Settings",
+        label: "Settings",
+    },
+    {
+        id: 6,
+        name: "Cart",
+        label: "Cart",
+    },
+    {
+        id: 7,
+        name: "Help",
+        label: "Help",
+    },
+    {
+        id: 8,
+        name: "Logout",
+        label: "Logout",
+    }
+]
+
 const Drawer = createDrawerNavigator();
 
 const CustomDrawerContent = ({ navigation }) => {
+    const [activeIndex, setActiveIndex] = useState(0);
     return (
         <View style={styles.customDrawerContent}>
             <View style={styles.headerDrawer}>
@@ -24,6 +68,30 @@ const CustomDrawerContent = ({ navigation }) => {
                     </View>
                 </View>
             </View>
+            <DrawerContentScrollView
+                scrollEnabled={false}
+                contentContainerStyle={styles.drawerContentContainerStyle}
+                style={styles.drawerContentItemMenu}
+            >
+                {MENUS?.map((menu, idx) => (
+                    <DrawerItem
+                        activeTintColor="#DABFFF"
+                        inactiveTintColor="#fff"
+                        focused={activeIndex === idx}
+                        key={idx}
+                        label={({ focused }) => {
+                            return (
+                                <View style={styles.drawerMenuContainerItemText}>
+                                    <View style={styles.drawerMenuLineIndicator(focused)}/>
+                                    <Text style={styles.drawerMenuItemText(focused)}>{menu.label}</Text>
+                                </View>
+                            )
+                        }}
+                        >
+
+                        </DrawerItem>
+                ))}
+            </DrawerContentScrollView>
         </View>
     )
 }
@@ -108,4 +176,21 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontFamily: 'latoBold'
     },
+    drawerContentContainerStyle: {},
+    drawerMenuContainerItemText: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+    },
+    drawerMenuLineIndicator: (focused) => ({
+        width: 4,
+        height: 30,
+        marginRight: 25,
+        backgroundColor: focused ? '#907AD6' : 'transparent',
+    }),
+    drawerMenuItemText: (focused) => ({
+        fontSize: 14,
+        fontFamily: focused ? 'latoBold' : 'latoRegular',
+        color: '#212121'
+    }),
 });
