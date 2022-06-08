@@ -1,13 +1,32 @@
 import React from "react";
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { 
     createDrawerNavigator, 
     DrawerContentScrollView,
     DrawerItem
 } from "@react-navigation/drawer";
 import { Home } from "../../screens/index";
+const UserImage = require('../../../assets/user.png');
 
 const Drawer = createDrawerNavigator();
+
+const CustomDrawerContent = ({ navigation }) => {
+    return (
+        <View style={styles.customDrawerContent}>
+            <View style={styles.headerDrawer}>
+                <View style={styles.headerContentContainer}>
+                    <View style={styles.headerImageContainer}>
+                        <Image source={UserImage} style={styles.headerImage} />
+                    </View>
+                    <View style={styles.headerUserInfo}>
+                        <Text style={styles.headerName}>Daniel Soto</Text>
+                        <Text style={styles.headerLocation}>Lima, Peru</Text>
+                    </View>
+                </View>
+            </View>
+        </View>
+    )
+}
 
 const DrawerMenu = () => {
     return (
@@ -19,9 +38,10 @@ const DrawerMenu = () => {
                     drawerType:"slide",
                     overlayColor: "transparent",
                     drawerStyle: styles.drawer,
-                    sceneContainerStyle: styles.screneContainer,
+                    sceneContainerStyle: styles.sceneContainerStyle,
                   }}
                 initialRouteName="Home"
+                drawerContent={props => <CustomDrawerContent {...props} />}
             >
             <Drawer.Screen name="Home">
                 {props => <Home {...props} />}
@@ -36,11 +56,54 @@ export default DrawerMenu;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#DABFFF'
+        backgroundColor: '#FFFFFF'
     },
     drawer: {
         flex: 1,
         width: '60%',
         backgroundColor: 'transparent',
-    }
+    },
+    sceneContainerStyle : {
+        backgroundColor: 'transparent' 
+    },
+    customDrawerContent: {
+        flex: 1,
+    },
+    headerDrawer: {
+        width: 200,
+        height: 105,
+        borderBottomEndRadius: 105 / 2,
+        backgroundColor: '#DABFFF',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    headerImageContainer: {
+        width: 50,
+        height: 50,
+        borderRadius: 20,
+        backgroundColor: '#fff',
+        marginRight: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    headerImage: {
+        width: 35,
+        height: 35,
+    },
+    headerContentContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    headerUserInfo: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    headerName: {
+        fontSize: 14,
+    },
+    headerLocation: {
+        fontSize: 12,
+        fontWeight: 'bold',
+    },
 });

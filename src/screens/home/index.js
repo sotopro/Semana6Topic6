@@ -1,7 +1,7 @@
 import { Text, View } from 'react-native';
 import { styles } from './styles';
 
-const Home = ({ props }) => {
+const Home = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
       <Text>Home</Text>
