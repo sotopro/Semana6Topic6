@@ -7,4 +7,9 @@ export const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    square: {
+      width: 100,
+      height: 100,
+      backgroundColor: '#9DACFF',
+    }
   });

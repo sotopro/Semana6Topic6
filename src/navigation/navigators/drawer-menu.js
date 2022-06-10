@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, Image } from 'react-native';
+import React, { useState, useEffect, useRef } from "react";
+import { View, Text, StyleSheet, Image, SafeAreaView, Animated } from 'react-native';
+
 import { 
     createDrawerNavigator, 
     DrawerContentScrollView,
@@ -55,6 +56,7 @@ const Drawer = createDrawerNavigator();
 
 const CustomDrawerContent = ({ navigation }) => {
     const [activeIndex, setActiveIndex] = useState(0);
+
     return (
         <View style={styles.customDrawerContent}>
             <View style={styles.headerDrawer}>
@@ -98,7 +100,7 @@ const CustomDrawerContent = ({ navigation }) => {
 
 const DrawerMenu = () => {
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Drawer.Navigator
                 drawerHideStatusBarOnOpen={true}
                 screenOptions={{
@@ -109,13 +111,14 @@ const DrawerMenu = () => {
                     sceneContainerStyle: styles.sceneContainerStyle,
                   }}
                 initialRouteName="Home"
-                drawerContent={props => <CustomDrawerContent {...props} />}
+                drawerContent={(props) => <CustomDrawerContent navigation={props.navigation}/>
+				}
             >
             <Drawer.Screen name="Home">
-                {props => <Home {...props} />}
+                {props => <Home {...props}/> }
             </Drawer.Screen>
             </Drawer.Navigator>
-        </View>
+        </SafeAreaView>
     )
 }
 

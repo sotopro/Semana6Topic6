@@ -11,7 +11,6 @@ export default function App() {
     latoLight: require('./assets/fonts/Lato-Light.ttf'),
     latoRegular: require('./assets/fonts/Lato-Regular.ttf'),
     latoThin: require('./assets/fonts/Lato-Thin.ttf'),
-
   });
 
   if (!loaded) {
