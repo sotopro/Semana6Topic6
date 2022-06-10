@@ -6,7 +6,7 @@ import {
     DrawerContentScrollView,
     DrawerItem
 } from "@react-navigation/drawer";
-import { Home } from "../../screens/index";
+import { Home, Auth, Cart,Categories, Help, Products, Profile, Settings } from "../../screens/index";
 const UserImage = require('../../../assets/user.png');
 
 const MENUS = [
@@ -89,6 +89,10 @@ const CustomDrawerContent = ({ navigation }) => {
                                 </View>
                             )
                         }}
+                        onPress={() => {
+                            setActiveIndex(idx);
+                            navigation.navigate(menu.name);
+                        }}
                         >
 
                         </DrawerItem>
@@ -116,6 +120,24 @@ const DrawerMenu = () => {
             >
             <Drawer.Screen name="Home">
                 {props => <Home {...props}/> }
+            </Drawer.Screen>
+            <Drawer.Screen name="Categories">
+                {props => <Categories {...props}/> }
+            </Drawer.Screen>
+            <Drawer.Screen name="Products">
+                {props => <Products {...props}/> }
+            </Drawer.Screen>
+            <Drawer.Screen name="Profile">
+                {props => <Profile {...props}/> }
+            </Drawer.Screen>
+            <Drawer.Screen name="Settings">
+                {props => <Settings {...props}/> }
+            </Drawer.Screen>
+            <Drawer.Screen name="Cart">
+                {props => <Cart {...props}/> }
+            </Drawer.Screen>
+            <Drawer.Screen name="Help">
+                {props => <Help {...props}/> }
             </Drawer.Screen>
             </Drawer.Navigator>
         </SafeAreaView>

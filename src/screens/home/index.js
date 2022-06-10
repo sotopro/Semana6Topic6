@@ -23,6 +23,7 @@ const Home = ({ navigation, route }) => {
 const SIZE = 100;
 
 const handleSize = () => {
+  console.log('handleSize');
   Animated.sequence([
     Animated.spring(progress, { toValue: 1, useNativeDriver: true }),
     Animated.spring(progress, { toValue: 0.5, useNativeDriver: true })
