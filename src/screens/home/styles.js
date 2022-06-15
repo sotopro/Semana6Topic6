@@ -24,6 +24,16 @@ export const styles = StyleSheet.create({
     fontSize: 26,
     color: "#ffffff",
   },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  loadingText: {
+    fontFamily: "latoRegular",
+    fontSize: 16,
+    marginVertical: 15,
+  },
   list: {
     flex: 1,
   },
