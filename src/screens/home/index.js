@@ -1,63 +1,52 @@
-import { useRef, useEffect } from 'react';
-import { Text, View, Animated, TouchableOpacity } from 'react-native';
-import { styles } from './styles';
+import React, { useState, useEffect } from "react";
+import { Text, View, SafeAreaView, FlatList, Image } from "react-native";
+import { styles } from "./styles";
 
 const Home = ({ navigation, route }) => {
-  const progress = useRef(new Animated.Value(0.5)).current;
-  const scale = useRef(new Animated.Value(1)).current;
+  const [animals, setAnimals] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    Animated.sequence([
-      Animated.spring(scale, { toValue: 2, useNativeDriver: true }),
-      Animated.spring(scale, { toValue: 1, useNativeDriver: true })
-    ]).start()
+    const fetchAnimals = async () => {
+      try {
+        const response = await fetch("http://192.168.18.8:3333/animals");
+        const data = await response.json();
+        setAnimals(data);
+      } catch (error) {
+        setError(error);
+      }
+    };
 
-    Animated.sequence([
-      Animated.spring(progress, { toValue: 1, useNativeDriver: true }),
-      Animated.spring(progress, { toValue: 0.5, useNativeDriver: true })
-    ]).start()
+    fetchAnimals();
+  }, []);
 
-    
-  }, [])
-
-const SIZE = 100;
-
-const handleSize = () => {
-  console.log('handleSize');
-  Animated.sequence([
-    Animated.spring(progress, { toValue: 1, useNativeDriver: true }),
-    Animated.spring(progress, { toValue: 0.5, useNativeDriver: true })
-  ]).start()
-}
-
-  return (
-    <View 
-      style={styles.container}>
-      <Animated.View style={[
-        styles.square, 
-        { 
-          borderRadius: progress.interpolate({
-            inputRange: [0, 1],
-            outputRange: [(0 * SIZE)/ 2, (1 * SIZE) / 2],
-          }),
-          opacity: progress,
-          transform: [
-            { scale },
-            { rotate: progress.interpolate({
-              inputRange: [0.5, 1],
-              outputRange: ['0deg', '360deg']
-            })}
-          ] 
-        }
-      ]}
-      >
-        <TouchableOpacity style={{ flex: 1, backgroundColor: 'transparent' }} onPress={() => handleSize()}/>
-      </Animated.View>
-      
+  const renderItem = ({ item }) => (
+    <View style={styles.card}>
+      <Text style={styles.cardName}>{item.name}</Text>
+      <Image
+        source={{ uri: item.image }}
+        style={styles.cardImage}
+        resizeMode="contain"
+      />
+      <Text style={styles.cardSpecies}>{item.species}</Text>
     </View>
   );
-}
 
-
+  return (
+    <SafeAreaView style={styles.safeAreaContainer}>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.title}>Zoo</Text>
+        </View>
+        <FlatList
+          data={animals}
+          keyExtractor={(item) => item.id}
+          renderItem={renderItem}
+          style={styles.list}
+        />
+      </View>
+    </SafeAreaView>
+  );
+};
 
 export default Home;

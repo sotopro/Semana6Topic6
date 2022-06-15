@@ -1,0 +1,84 @@
+{
+    "animals": [{
+            "id": "1",
+            "name": "Bobby",
+            "species": "cocodrile",
+            "age": "2",
+            "location": "America",
+            "caretakers": "1",
+            "image": "https://cdn-icons-png.flaticon.com/512/4193/4193310.png"
+        },
+        {
+            "id": "2",
+            "name": "Peanut",
+            "species": "buffalo",
+            "age": "4",
+            "location": "America",
+            "caretakers": "2",
+            "image": "https://cdn-icons-png.flaticon.com/512/4193/4193245.png"
+        },
+        {
+            "id": "3",
+            "name": "Buttercup",
+            "species": "flamingo",
+            "age": "1",
+            "location": "Africa",
+            "caretakers": "1",
+            "image": "https://cdn-icons-png.flaticon.com/512/4193/4193247.png"
+        },
+        {
+            "id": "4",
+            "name": "Bubbles",
+            "species": "sheep",
+            "age": "3",
+            "location": "America",
+            "caretakers": "2",
+            "image": "https://cdn-icons-png.flaticon.com/512/4193/4193251.png"
+        },
+        {
+            "id": "5",
+            "name": "Bella",
+            "species": "cow",
+            "age": "3",
+            "location": "America",
+            "caretakers": "3",
+            "image": "https://cdn-icons-png.flaticon.com/512/4193/4193256.png"
+        },
+        {
+            "id": "6",
+            "name": "paty",
+            "species": "bunny",
+            "age": "3",
+            "location": "America",
+            "caretakers": "1",
+            "image": "https://cdn-icons-png.flaticon.com/512/4193/4193269.png"
+        },
+        {
+            "id": "7",
+            "name": "nelly",
+            "species": "fox",
+            "age": "3",
+            "location": "Asia",
+            "caretakers": "2",
+            "image": "https://cdn-icons-png.flaticon.com/512/4193/4193266.png"
+        },
+        {
+            "id": "8",
+            "name": "sunny",
+            "species": "panda",
+            "age": "6",
+            "location": "Asia",
+            "caretakers": "6",
+            "image": "https://cdn-icons-png.flaticon.com/512/4193/4193288.png"
+        },
+        {
+            "id": "9",
+            "name": "ramon",
+            "species": "tiger",
+            "age": "4",
+            "location": "Africa",
+            "caretakers": "1",
+            "image": "https://cdn-icons-png.flaticon.com/512/4193/4193303.png"
+        }
+    ]
+}
